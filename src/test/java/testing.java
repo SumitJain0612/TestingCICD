@@ -9,4 +9,9 @@ public class testing {
     public void printName() {
         System.out.println("Sumit Jain");
     }
+
+    @Test
+    public void message() {
+        System.out.println("Hi...Sumit heere");
+    }
 }
