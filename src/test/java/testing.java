@@ -12,6 +12,6 @@ public class testing {
 
     @Test
     public void message() {
-        System.out.println("Saying hi to anvitha");
+        System.out.println("Saying hi to test");
     }
 }
