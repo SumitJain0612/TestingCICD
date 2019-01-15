@@ -18,11 +18,14 @@ pipeline {
         
         stage('deploy to prod'){
             steps {
-                def doesJavaRock = input(message: 'Do you like Java?', ok: 'Yes', 
-                        parameters: [booleanParam(defaultValue: true, 
-                        description: 'If you like Java, just push the button',name: 'Yes?')])
-
-                    echo "Java rocks?:" + doesJavaRock
+                if (userInput == true) {
+                    // do something
+                    echo "this was successful"
+                } else {
+                    // do something else
+                    echo "this was not successful"
+                    currentBuild.result = 'FAILURE'
+                } 
             }
         }
         
@@ -31,5 +34,17 @@ pipeline {
                 echo 'Deploying....'
             }
         }
+    }
+    
+    def userInput
+    try {
+        userInput = input(
+            id: 'Proceed1', message: 'Was this successful?', parameters: [
+            [$class: 'BooleanParameterDefinition', defaultValue: true, description: '', name: 'Please confirm you agree with this']
+            ])
+    } catch(err) { // input false
+        def user = err.getCauses()[0].getUser()
+        userInput = false
+        echo "Aborted by: [${user}]"
     }
 }
