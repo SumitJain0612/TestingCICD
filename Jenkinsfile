@@ -23,7 +23,8 @@ pipeline {
                         description: 'If you like Java, just push the button',name: 'Yes?')])
 
                     echo "Java rocks?:" + doesJavaRock
-}
+            }
+        }
         
         stage('Deploy') {
             steps {
