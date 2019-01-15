@@ -1,10 +1,21 @@
+pipeline {
+    agent any
 
-node{
-    stage('SCM'){
-        git credentialsId: 'SumitJain0612', url: 'https://github.com/SumitJain0612/TestingCICD.git'
-    }
-    
-    stage('QA'){
-          echo 'Regressions'
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building..'
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Testing..'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
     }
 }
