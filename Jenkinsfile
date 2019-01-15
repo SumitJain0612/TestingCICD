@@ -17,8 +17,10 @@ pipeline {
         }
         
         stage('deploy to prod'){
-            parameters {
-            booleanParam defaultValue: true, description: '', name: 'Continue???'
+            steps {
+                parameters {
+                booleanParam defaultValue: true, description: '', name: 'Continue???'
+            }
 }
         }
         stage('Deploy') {
