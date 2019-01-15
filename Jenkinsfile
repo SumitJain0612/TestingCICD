@@ -24,7 +24,7 @@ pipeline {
 
                     echo "Java rocks?:" + doesJavaRock
 }
-        }
+        
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
