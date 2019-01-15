@@ -15,6 +15,12 @@ pipeline {
                 sh 'mvn clean package'
             }
         }
+        
+        stage('deploy to prod'){
+            parameters {
+            booleanParam defaultValue: true, description: '', name: 'Continue???'
+}
+        }
         stage('Deploy') {
             steps {
                 echo 'Deploying....'
