@@ -46,7 +46,7 @@ pipeline {
         
         stage('LTE') {
             steps {
-                when { env.RELEASE_SCOPE "LTE" 
+                when { env.RELEASE_SCOPE : 'LTE' 
                         //return env.RELEASE_SCOPE != 'LTE';
                     
                  }
