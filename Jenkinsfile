@@ -13,7 +13,7 @@ pipeline {
         stage('deploy to QA'){
             steps {
                 input(message: 'Do you want to push the build to QA?', ok: 'Confirm', 
-                        parameters: [booleanParam(defaultValue: true, 
+                        parameters: [booleanParam( 
                         description: 'Do you want to push the build to QA?')])
                 echo "deplyoing to QA"
                 
