@@ -62,7 +62,7 @@ pipeline {
             }
         }
         
-        stage('Deply yo prod') {
+        stage('Deply To prod') {
             steps {
                 input(message: 'Do you want to push the build to Production?', ok: 'Yes', 
                         parameters: [booleanParam(defaultValue: true, 
