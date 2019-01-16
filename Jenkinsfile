@@ -40,7 +40,7 @@ pipeline {
         stage('LT Approval') {
             steps { 
               script {
-                    env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Yes!',
+                    env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Confirm!',
                             parameters: [choice(name: 'RELEASE_SCOPE',
                                                 choices: 'Yes\nNo',
                                                 description: 'You want to run the load tests??')]
@@ -67,7 +67,7 @@ pipeline {
         
         stage('Deply To prod') {
             steps {
-                input(message: 'Do you want to push the build to Production?', ok: 'Yes', 
+                input(message: 'Do you want to push the build to Production?', ok: 'Confirm', 
                         parameters: [booleanParam(defaultValue: true, 
                         description: 'Do you want to push the build to QA?',name: 'Yes?')])
                 echo "deplyoing to Prod"
