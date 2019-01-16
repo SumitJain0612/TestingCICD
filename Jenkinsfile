@@ -66,9 +66,10 @@ pipeline {
         
         stage('Deply To prod') {
             steps {
-                input(message: 'Do you want to push the build to Production?', ok: 'Confirm', 
-                        parameters: [booleanParam(defaultValue: true, 
-                        description: 'Do you want to push the build to QA?',name: 'Yes?')])
+                //input(message: 'Do you want to push the build to Production?', ok: 'Confirm', 
+                      //  parameters: [booleanParam(defaultValue: true, 
+                       // description: 'Do you want to push the build to QA?',name: 'Yes?')])
+                input(message: 'Do you want to push the build to Production?', ok: 'Confirm')
                 echo "deplyoing to Prod"
                 
             }
