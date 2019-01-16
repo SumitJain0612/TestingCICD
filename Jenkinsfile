@@ -10,7 +10,11 @@ pipeline {
         
         stage('deploy to QA'){
             steps {
+                input(message: 'Do you like Java?', ok: 'Yes', 
+                        parameters: [booleanParam(defaultValue: true, 
+                        description: 'If you like Java, just push the button',name: 'Yes?')])
                 echo "deplyoing to QA"
+                
             }
         }
         
