@@ -48,7 +48,9 @@ pipeline {
         }
         
         stage('Load Test') {
-               
+                when {
+                    expression { return env.RELEASE_SCOPE == 'Yes' }
+                 }
             steps {
                    echo 'Run load tests'
             }
