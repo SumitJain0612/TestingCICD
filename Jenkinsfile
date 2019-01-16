@@ -35,13 +35,7 @@ pipeline {
         }
         
         stage('Want to run Load Test') {
-            steps {
-              //  input(message: 'Do you want to push the build to LTE?', ok: 'Yes', 
-               //         parameters: [booleanParam(defaultValue: true, 
-             //           description: 'Do you want to push the build to QA?',name: 'Yes?')])
-              //  echo "deplyoing to LTE"
-                //Do you want to push the build to LTE or skip the LTE step and move to UAT?'
-                
+            steps { 
               script {
                     env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Release!',
                             parameters: [choice(name: 'RELEASE_SCOPE',
@@ -54,9 +48,7 @@ pipeline {
         }
         
         stage('Load Test') {
-                when {
-                    expression { return env.RELEASE_SCOPE == 'Yes' }
-                 }
+               
             steps {
                    echo 'Run load tests'
             }
