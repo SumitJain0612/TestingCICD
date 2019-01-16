@@ -34,7 +34,7 @@ pipeline {
              //           description: 'Do you want to push the build to QA?',name: 'Yes?')])
               //  echo "deplyoing to LTE"
                 //Do you want to push the build to LTE or skip the LTE step and move to UAT?'
-                parameters { choice(name: 'CHOICES', choices: ['Deploy to LTE', 'Deploy to UAT', 'Abort'], description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?') 
+                parameters { choice(name: 'CHOICES', choices: ['Deploy to LTE', 'Deploy to UAT', 'Abort'], description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')} 
                 
             }
         }
