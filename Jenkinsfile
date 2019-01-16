@@ -10,7 +10,7 @@ pipeline {
         
         stage('deploy to QA'){
             steps {
-                echo "deplyoing to QA
+                echo "deplyoing to QA"
             }
         }
         
