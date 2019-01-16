@@ -27,7 +27,14 @@ pipeline {
             }
         }
         
-        stage('Deploy to LTE') {
+        
+        stage('LTE') {
+            steps {
+                   echo 'Deployed to LTE'
+            }
+        }
+        
+        stage('Want to run Load Test') {
             steps {
               //  input(message: 'Do you want to push the build to LTE?', ok: 'Yes', 
                //         parameters: [booleanParam(defaultValue: true, 
@@ -36,19 +43,19 @@ pipeline {
                 //Do you want to push the build to LTE or skip the LTE step and move to UAT?'
                 
               script {
-                    env.RELEASE_SCOPE = input message: 'Where you want to push', ok: 'Release!',
+                    env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Release!',
                             parameters: [choice(name: 'RELEASE_SCOPE',
-                                                choices: 'LTE\nUAT',
-                                                description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
+                                                choices: 'Yes\nNo',
+                                                description: 'You want to run the load tests??')]
                 }
                 echo "${env.RELEASE_SCOPE}"
                 
             }
         }
         
-        stage('LTE') {
+        stage('Load Test') {
                 when {
-                    expression { return env.RELEASE_SCOPE == 'LTE' }
+                    expression { return env.RELEASE_SCOPE == 'Yes' }
                  }
             steps {
                    echo 'Run load tests'
