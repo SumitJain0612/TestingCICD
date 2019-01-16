@@ -46,11 +46,12 @@ pipeline {
         
         stage('LTE') {
             steps {
-                when {
-                    expression {
-                        return env.RELEASE_SCOPE != 'LTE';
-                     }
-    }
+                //when {
+                   // expression {
+                     //   return env.RELEASE_SCOPE != 'LTE';
+                    // }
+                 //}
+                if (env.RELEASE_SCOPE == "LTE") {   
                 echo 'Run load tests'
             }
         }
