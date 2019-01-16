@@ -10,9 +10,9 @@ pipeline {
         
         stage('deploy to QA'){
             steps {
-                input(message: 'Do you like Java?', ok: 'Yes', 
+                input(message: 'Do you want to push the build to QA?', ok: 'Yes', 
                         parameters: [booleanParam(defaultValue: true, 
-                        description: 'If you like Java, just push the button',name: 'Yes?')])
+                        description: 'Do you want to push the build to QA?',name: 'Yes?')])
                 echo "deplyoing to QA"
                 
             }
@@ -29,7 +29,11 @@ pipeline {
         
         stage('Deploy to LTE') {
             steps {
-                echo 'Deploying....'
+                input(message: 'Do you want to push the build to LTE?', ok: 'Yes', 
+                        parameters: [booleanParam(defaultValue: true, 
+                        description: 'Do you want to push the build to QA?',name: 'Yes?')])
+                echo "deplyoing to LTE"
+                
             }
         }
         
@@ -47,7 +51,11 @@ pipeline {
         
         stage('Deply yo prod') {
             steps {
-                echo 'Deploying....'
+                input(message: 'Do you want to push the build to Production?', ok: 'Yes', 
+                        parameters: [booleanParam(defaultValue: true, 
+                        description: 'Do you want to push the build to QA?',name: 'Yes?')])
+                echo "deplyoing to QA"
+                
             }
         }
         
