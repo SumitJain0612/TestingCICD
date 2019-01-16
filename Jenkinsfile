@@ -37,7 +37,9 @@ pipeline {
                 
               script {
                     env.RELEASE_SCOPE = input message: 'Where you want to push', ok: 'Release!',
-                            parameters: [choice(name: 'RELEASE_SCOPE', choices: 'LTE\nUAT\nAbort', description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
+                            parameters: [choice(name: 'RELEASE_SCOPE',
+                                                choices: 'LTE\nUAT\nAbort',
+                                                description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
                 }
                 echo "${env.RELEASE_SCOPE}"
                 
@@ -46,7 +48,7 @@ pipeline {
         
         stage('LTE') {
                 when {
-                    expression { return env.RELEASE_SCOPE != 'LTE' }
+                    expression { return env.RELEASE_SCOPE == 'LTE' }
                  }
             steps {
                    echo 'Run load tests'
@@ -64,14 +66,8 @@ pipeline {
                 input(message: 'Do you want to push the build to Production?', ok: 'Yes', 
                         parameters: [booleanParam(defaultValue: true, 
                         description: 'Do you want to push the build to QA?',name: 'Yes?')])
-                echo "deplyoing to QA"
+                echo "deplyoing to Prod"
                 
-            }
-        }
-        
-        stage('Sanity') {
-            steps {
-                echo 'Deploying....'
             }
         }
     }
