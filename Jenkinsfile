@@ -29,6 +29,15 @@ pipeline {
             }
         }
         
+        stage('QA Certified') {
+            steps {
+                input(message: 'QA is Cerifiying the build?', ok: 'Confirm', 
+                        )
+                echo "Build is Certified"
+                
+            }
+        }
+        
         
         stage('LTE') {
             steps {
