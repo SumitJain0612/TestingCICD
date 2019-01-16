@@ -38,7 +38,7 @@ pipeline {
               script {
                     env.RELEASE_SCOPE = input message: 'Where you want to push', ok: 'Release!',
                             parameters: [choice(name: 'RELEASE_SCOPE',
-                                                choices: 'LTE\nUAT\nAbort',
+                                                choices: 'LTE\nUAT',
                                                 description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
                 }
                 echo "${env.RELEASE_SCOPE}"
