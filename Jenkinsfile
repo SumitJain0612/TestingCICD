@@ -52,7 +52,8 @@ pipeline {
                     // }
                  //}
                 if (env.RELEASE_SCOPE == "LTE") {   
-                echo 'Run load tests'
+                    echo 'Run load tests'
+                }
             }
         }
         
