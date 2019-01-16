@@ -34,10 +34,10 @@ pipeline {
             }
         }
         
-        stage('Want to run Load Test') {
+        stage('LT Approval') {
             steps { 
               script {
-                    env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Release!',
+                    env.RELEASE_SCOPE = input message: 'You want to run the load tests??', ok: 'Yes!',
                             parameters: [choice(name: 'RELEASE_SCOPE',
                                                 choices: 'Yes\nNo',
                                                 description: 'You want to run the load tests??')]
