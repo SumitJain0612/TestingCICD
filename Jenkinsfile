@@ -36,8 +36,8 @@ pipeline {
                 //Do you want to push the build to LTE or skip the LTE step and move to UAT?'
                 
               script {
-                    env.RELEASE_SCOPE = input message: 'User input required', ok: 'Release!',
-                            parameters: [choice(name: 'RELEASE_SCOPE', choices: 'patch\nminor\nmajor', description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
+                    env.RELEASE_SCOPE = input message: 'Where you want to push', ok: 'Release!',
+                            parameters: [choice(name: 'RELEASE_SCOPE', choices: 'LTE\nUAT\nAbort', description: 'Do you want to push the build to LTE or skip the LTE step and move to UAT?')]
                 }
                 echo "${env.RELEASE_SCOPE}"
                 
@@ -46,7 +46,12 @@ pipeline {
         
         stage('LTE') {
             steps {
-                echo 'Deploying....'
+                when {
+                    expression {
+                        return env.RELEASE_SCOPE != 'LTE';
+                     }
+    }
+                echo 'Run load tests'
             }
         }
         
