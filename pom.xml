@@ -22,6 +22,14 @@
             <version>6.9.10</version>
             <scope>test</scope>
         </dependency>
+	    
+	    <!-- https://mvnrepository.com/artifact/org.apache.jmeter/ApacheJMeter_core -->
+	<dependency>
+	    <groupId>org.apache.jmeter</groupId>
+	    <artifactId>ApacheJMeter_core</artifactId>
+	    <version>5.0</version>
+	</dependency>
+
 
     </dependencies>
 
